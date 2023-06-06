@@ -12,4 +12,6 @@
 
 # GitHub: This approach is used, when we already have a project and then
 # we want to create a repository of this project
+
 usethis::use_git()
+usethis::use_github()
