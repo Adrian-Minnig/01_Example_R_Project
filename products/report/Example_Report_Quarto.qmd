@@ -1,0 +1,21 @@
+---
+title: "Example Quarto Markdown file"
+author: "Adrian Minnig"
+date: "`r date()`"
+format: html
+html:
+---
+
+
+Code needs to be within three backticks"```" 
+Everything else is just plain text
+```{r}
+library(tidyverse)
+library(lubridate)
+#| warning: false
+```
+
+sessionInfo()
+# Example Introduction
+
+# Data
