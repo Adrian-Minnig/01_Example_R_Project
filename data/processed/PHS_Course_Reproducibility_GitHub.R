@@ -8,3 +8,6 @@
 # When creating a Quarto document, we can choose documents (HTML, docx, pdf) or
 # presentations (RevealjS, Powerpoint etc) RevealjS is recommended for full
 # functionality (The slides for this course were created like this)
+
+
+# GitHub
