@@ -10,4 +10,6 @@
 # functionality (The slides for this course were created like this)
 
 
-# GitHub
+# GitHub: This approach is used, when we already have a project and then
+# we want to create a repository of this project
+usethis::use_git()
