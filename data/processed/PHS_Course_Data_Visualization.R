@@ -409,10 +409,14 @@ plot_ebola_col_grid <- plot_grid(plotlist = list(plot_ebola_col_v1, plot_ebola_c
 print(plot_ebola_col_grid)
 # Plot needs to be adjusted before export as png or other file format (e.g. size)
 
+
 # Exercices with insurance data...
 
+
+
 # Report Submission
-data("ToothGrowth")
+data("ToothGrowth")       # This is a dataset already preinstalled in RStudio
+
 # The response is the length of odontoblasts (cells responsible for tooth growth) 
 # in 60 guinea pigs. Each animal received one of three dose levels of vitamin C 
 # (0.5, 1, and 2 mg/day) by one of two delivery methods, orange juice or 

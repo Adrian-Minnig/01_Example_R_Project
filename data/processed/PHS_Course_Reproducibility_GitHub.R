@@ -15,3 +15,5 @@
 
 usethis::use_git()
 usethis::use_github()
+#run the usethis::usegit() command then chose the actions by tying (1,2 or 3 )
+# in the console.
