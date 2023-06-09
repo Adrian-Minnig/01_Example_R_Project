@@ -5,9 +5,31 @@ format: html
 editor: visual
 ---
 
-## Quarto
+## PHS Course Submission Report Adrian Minnig
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+## Dataset
+
+Insert Datasetinfo
+
+## Descriptive Statistics
+
+install package gtsummary and load it
+
+\--\> look for code in the slides, then delete the code line "where is. double" and run the code with the
+
+additional line "add overall" ---\> nice summary
+
+## Analysis
+
+Do Normality Tests --\> if normal then do t-Test
+
+if not normal --\> Wilcox Rangsum
+
+Shapiro TEst is for small samples
+
+Kolgomorov test is for samples larger than 50
+
+## Discussion
 
 ## Running Code
 

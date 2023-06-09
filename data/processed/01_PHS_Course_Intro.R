@@ -8,6 +8,10 @@
 # The working directory can also be set using the gear wheel icon 
 #in the bottom right window.
 
+# good practice / conventions
+
+
+
 # Example of creating data:
 id<-c(1,2,3,4,5)
 # The same thing can be done with:
@@ -53,6 +57,9 @@ head(data, 10)
 tail(data, 10)
 summary(data)
 View(data)
+
+# Piping data
+# 
 
 # So far, we worked with base R tools. In RSTudio, lots of packages have
 # useful functions. tidyverse makes a lot of statistical work easier

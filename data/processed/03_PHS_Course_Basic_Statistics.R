@@ -67,3 +67,9 @@ ggplot(data, aes(y=fev1, color=sex)) +
   geom_boxplot(color = "blue") +
   scale_x_discrete()
 
+# p-values, statistical testing
+# We should think more about p-values on a blurry scale and NOT just using
+# the historic cut off value of 0.05. This can lead to misleading 
+
+# Exercice Thursday Morning
+install.packages("riskCommunicator")
