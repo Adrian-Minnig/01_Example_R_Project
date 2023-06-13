@@ -97,6 +97,12 @@ mean(data_VC_0.5$len)
 mean(data_VC_1$len)
 mean(data_VC_2$len)
 
+mean(data_OJ$len)
+mean(data_VC$len)
+
+median(data_OJ$len)
+median(data_VC$len)
+
 median(data_OJ_0.5$len)
 median(data_OJ_1$len)
 median(data_OJ_2$len)
@@ -115,6 +121,7 @@ data_OJ %>%
   mutate(dose_f = as.factor(as.character(dose)))
 data_OJ <- data_OJ %>%
   mutate(dose_f = as.factor(as.character(dose)))
+
 
 data_VC %>%
   mutate(dose_f = as.factor(as.character(dose)))
