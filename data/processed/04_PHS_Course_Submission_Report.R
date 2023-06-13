@@ -6,9 +6,11 @@
 
 setwd('C:/Users/adrian/Desktop/PHS_Course/Week_1_Basic_Statistics_Projects_R/01_Example_R_Project')
 
+
 library(tidyverse)
 library(unibeCols)
 library(usethis)
+library(remotes)
 library(gitcreds)
 library(here)
 library(medicaldata)
@@ -17,6 +19,7 @@ library(readr)
 library(lubridate)
 library(dplyr)
 library(ggplot2)
+library(gtsummary)
 
 
 # Report Submission
