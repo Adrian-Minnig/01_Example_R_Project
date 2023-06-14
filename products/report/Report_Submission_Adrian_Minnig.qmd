@@ -1,23 +1,31 @@
 ---
-title: "Report_Submission_Adrian_Minnig"
+title: "Report_Final_Assessment_Adrian_Minnig"
 author: "Adrian Minnig"
+date: "13.06.2023"
 format: html
-editor: visual
+    fig-width: 8
+    fig-height: 4
+editor: source
 ---
 
-## PHS Course Submission Report Adrian Minnig
+## Introduction (Dataset-Info)
 
-## Dataset
+The dataset "ToothGrowth" already built into R was used for this assessment.
 
-Insert Datasetinfo
+> The response is the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, orange juice or ascorbic acid (a form of vitamin C and coded as VC). [C. I. Bliss (1952). The Statistics of Bioassay](https://doi.org/10.1016/C2013-0-12584-6)
+
+## Materials and Methods (Requirements in R(Studio)
+
+Information on used versions of R(Studio) and packages installed to reproduce the data\
+are summarized in the "sessionInfo" at the end of this report.
 
 ## Descriptive Statistics
 
-install package gtsummary and load it
+The dataset "ToothGrowth" was first examined using the functions "view" and "str"
 
-\--\> look for code in the slides, then delete the code line "where is. double" and run the code with the
-
-additional line "add overall" ---\> nice summary
+```{r}
+view(ToothGrowth)
+```
 
 ## Analysis
 
@@ -32,6 +40,8 @@ Kolgomorov test is for samples larger than 50
 ## Discussion
 
 ## Running Code
+
+sessioninfo()
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 

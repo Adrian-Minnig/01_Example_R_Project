@@ -20,7 +20,7 @@ library(lubridate)
 library(dplyr)
 library(ggplot2)
 library(gtsummary)
-
+library(rstatix)
 
 # Report Submission
 data("ToothGrowth")       # This is a dataset already preinstalled in RStudio
@@ -32,6 +32,9 @@ data("ToothGrowth")       # This is a dataset already preinstalled in RStudio
 
 View(ToothGrowth)
 summary(ToothGrowth)
+
+head(ToothGrowth)
+str(ToothGrowth)
 
 # The command "filter" is used to filter coloumns
 
@@ -78,7 +81,7 @@ data_VC_2 <- data_OJ %>%
 
 ToothGrowth %>%               # Filter ToothGrowth to show only dose 0.5
   filter(dose == 0.5)
-dose0.5 <- ToothGrowth %>%
+dose_0.5 <- ToothGrowth %>%
   filter(dose == 0.5)
 
 ToothGrowth %>%               # Filter ToothGrowth to show only dose 1
@@ -93,31 +96,11 @@ dose_2 <- ToothGrowth %>%
 
 
 # Calculating descriptive values
-mean(data_OJ_0.5$len)
-mean(data_OJ_1$len)
-mean(data_OJ_2$len)
-mean(data_VC_0.5$len)
-mean(data_VC_1$len)
-mean(data_VC_2$len)
+ToothGrowth %>%
+  group_by(supp, dose) %>%
+  summarize(mean(len))
 
-mean(data_OJ$len)
-mean(data_VC$len)
 
-median(data_OJ$len)
-median(data_VC$len)
-
-median(data_OJ_0.5$len)
-median(data_OJ_1$len)
-median(data_OJ_2$len)
-median(data_VC_0.5$len)
-median(data_VC_1$len)
-median(data_VC_2$len)
-
-# Mutate dose as factor for data_VC
-data_VC %>%
-  mutate(dose_f = as.factor(as.character(dose)))
-data_VC <- data_VC %>%
-  mutate(dose_f = as.factor(as.character(dose)))
 
 # Mutate dose as factor for data_OJ and data_VC
 data_OJ %>%
@@ -125,13 +108,33 @@ data_OJ %>%
 data_OJ <- data_OJ %>%
   mutate(dose_f = as.factor(as.character(dose)))
 
-
 data_VC %>%
   mutate(dose_f = as.factor(as.character(dose)))
 data_VC <- data_VC %>%
   mutate(dose_f = as.factor(as.character(dose)))
 
+ToothGrowth %>%
+  mutate(dose_f = as.factor(as.character(dose)))
+ToothGrowth <- ToothGrowth %>%
+  mutate(dose_f = as.factor(as.character(dose)))
 
+
+
+# Mutate OJ and VC as factors for different dosages
+dose_0.5 %>%
+  mutate(supp_f = as.factor(as.character(supp)))
+dose_0.5 <- dose_0.5 %>%
+  mutate(supp_f = as.factor(as.character(supp)))
+
+dose_1 %>%
+  mutate(supp_f = as.factor(as.character(supp)))
+dose_1 <- dose_1 %>%
+  mutate(supp_f = as.factor(as.character(supp)))
+
+dose_2 %>%
+  mutate(supp_f = as.factor(as.character(supp)))
+dose_2 <- dose_0.5 %>%
+  mutate(supp_f = as.factor(as.character(supp)))
 
 # Generating boxplots for the two different supplements
 data_OJ %>%
@@ -140,12 +143,106 @@ data_OJ %>%
 
 data_VC %>%
   ggplot(aes(dose_f, len)) +
+  geom_boxplot() +
+  
+
+
+
+
+#Generating boxplots for the different dosages
+dose_0.5 %>%
+  ggplot(aes(supp_f, len)) +
   geom_boxplot()
 
+dose_1 %>%
+  ggplot(aes(supp_f, len)) +
+  geom_boxplot()
 
-# Analysis
+dose_2 %>%
+  ggplot(aes(supp_f, len)) +
+  geom_boxplot()
+
+# Generating Summary Tables
+
+
+Summary_Table_OJ <- 
+  data_OJ %>%
+  select(len, dose) %>%
+  tbl_summary(
+    by = dose, 
+    label = list(len ~ "Tooth Length [mm]"),
+    statistic = list(all_continuous() ~ "{mean} ({sd})"),
+    digits = list(len ~ c(1, 1))) %>%
+  add_overall()
+print(Summary_Table_OJ)
+
+  
+Summary_Table_VC <-
+data_VC %>%
+  select(len, dose) %>%
+  tbl_summary(
+    by = dose, 
+    label = list(len ~ "Tooth Length [mm]"),
+    statistic = list(all_continuous() ~ "{mean} ({sd})"),
+    digits = list(len ~ c(1, 1))) %>%
+  add_overall()
+print(Summary_Table_VC)
+
+
+ToothGrowth %>%
+  group_by(supp, dose) %>%
+  summarize(mean(len))
+  
+
+
+
+
+
+# ------------   Analysis  ---------------------------
 
 # Normality Testing
+shapiro.test(data_OJ_0.5$len)
+shapiro.test(data_OJ_1$len)
+shapiro.test(data_OJ_2$len)
+shapiro.test(data_VC_0.5$len)
+shapiro.test(data_VC_1$len)
+shapiro.test(data_VC_2$len)
+
+shapiro.test(ToothGrowth$len)
+
+# QQ Plot
+ToothGrowth %>%
+  ggplot(aes(sample = len)) + 
+  geom_qq_line(distribution = stats::qnorm) +
+  geom_qq(color = "steelblue", distribution = stats::qnorm) + 
+  xlab("Theoretical Quantiles") +
+  ylab("Tooth Length Quantiles") +
+  theme_bw() +
+  ggtitle(label = "QQ-Plot of Tooth Length")
 
 
+# The QQ-Plot suggests normally distributed data and the shapiro Tests with 
+# high p-values confirmes Normality as the Null-Hypothesis of Normality is
+# confirmed
+# Null-Hypothesis of Shapiro Wilk Test = sample distribution is normal
+# Statistical Tests
 
+
+# Analysis -------------------------------------------------
+# Hypothesis 1: There is a difference in Toothgrowth between the supplements
+# OJ and VC for the different dosages   
+# Null Hypothesis = no difference in Toothgrowth between OJ and VC
+
+
+dose_0.5 %>%
+  t_test(len ~ supp)
+
+dose_1 %>%
+  t_test(len ~ supp)
+
+dose_2 %>%
+  t_test(len ~ supp) 
+
+# Null Hypothesis can be rejected for doses 0.5 and 1 (and probably dosages
+# in between tough these were not tested)
+# Null Hypothesis cannot be rejected for dose 2.
