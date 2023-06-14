@@ -139,11 +139,15 @@ dose_2 <- dose_0.5 %>%
 # Generating boxplots for the two different supplements
 data_OJ %>%
   ggplot(aes(dose_f, len)) +
-  geom_boxplot()
+  geom_boxplot() +
+  xlab(label = "Dose of supplement [mg/d]") +
+  ylab(label = "Tooth-Length [mm]") +
+  theme_bw() + theme(legend.position="bottom") 
+
 
 data_VC %>%
   ggplot(aes(dose_f, len)) +
-  geom_boxplot() +
+  geom_boxplot() 
   
 
 
