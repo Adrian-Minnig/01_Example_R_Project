@@ -1,5 +1,5 @@
 
-setwd('C:/Users/adrian/Desktop/PHS_Course/Week_1_Basic_Statistics_Projects_R/01_Example_R_Project/data/raw/')
+
 
 library(tidyverse)
 library(unibeCols)
@@ -14,9 +14,11 @@ library(dplyr)
 library(ggplot2)
 
 
+
 #Exercice 4 - Ebola data, creating plots
 # Exercice 4A read Ebola data
-data_ebola <- read.csv("ebola.csv")
+data_ebola <- read.csv("/ebola.csv")
+
 
 # format column datum of data_ebola as date
 data_ebola$Date <- as.Date(data_ebola$Date)
