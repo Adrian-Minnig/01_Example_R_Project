@@ -82,7 +82,7 @@ ToothGrowth %>%
 
 ### Summary Table
 
-@fig-Tooth-Length shows means and standard deviations (SD) for the three doses of the supplement Orange Juice.
+@fig-Tooth-Length shows means and standard deviations (SD) for the three doses of the supplement Orange Juice.
 
 ```{r}
 #| label: fig-Tooth-Length
